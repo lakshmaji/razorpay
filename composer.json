@@ -1,0 +1,23 @@
+{
+    "name": "lakshmaji/razorpay",
+    "description": "Razorpay payment integration for laravel",
+    "keywords": [
+        "Razoray", "Laravel", "composer"
+    ],
+    "require": {
+        "razorpay/razorpay": "^2.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lakshmaji",
+            "email": "lakshmajee88@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Lakshmaji\\Razoray\\": "src/"
+        }
+    }
+}
