@@ -19,5 +19,15 @@
         "psr-4": {
             "Lakshmaji\\Razoray\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lakshmaji\\Razoray\\RazorpayServiceProvider"
+            ],
+            "aliases": {
+                "Debugbar": "Lakshmaji\\Razoray\\Razorpay"
+            }
+        }
     }
 }
