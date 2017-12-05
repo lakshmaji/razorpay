@@ -4,7 +4,8 @@ namespace Lakshmaji\Razorpay;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Config\Repository as Config;
-require_once __DIR__.'/../vendor/autoload.php';
+// require_once __DIR__.'/../vendor/autoload.php';
+// use Razorpay\Api\Api;
 
 /**
  * The Razorpay Serviceprovider
