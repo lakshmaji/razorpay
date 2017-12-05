@@ -4,6 +4,11 @@
     "keywords": [
         "Razorpay", "Laravel", "composer"
     ],
+    "homepage" : "https://github.com/lakshmaji/razorpay",
+    "support" : {
+        "source" : "https://github.com/lakshmaji/razorpay",
+        "issues" : "https://github.com/lakshmaji/razorpay/issues"
+    },
     "require": {
         "razorpay/razorpay": "^2.2"
     },
@@ -26,7 +31,7 @@
                 "Lakshmaji\\Razorpay\\RazorpayServiceProvider"
             ],
             "aliases": {
-                "Debugbar": "Lakshmaji\\Razorpay\\Razorpay"
+                "Razorpay": "Lakshmaji\\Razorpay\\Razorpay"
             }
         }
     }
