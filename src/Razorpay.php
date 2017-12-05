@@ -52,9 +52,6 @@ class Razorpay
     
     // ------------------------------------------------------------------------
 
-public function test() {
-    echo "inn package\n";
-}
 
 	/*
 	|--------------------------------------------------------------------------
@@ -75,7 +72,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getPaymentDetails($payment_id, $capture = []) {
+    public static function getPaymentDetails($payment_id, $capture = []) {
     	$payment = $this->api->payment->fetch($payment_id);
     	if(!!count($capture)) {
     		$payment->capture($capture);
@@ -95,7 +92,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-	public function getAllPayments($options = []) {
+	public static function getAllPayments($options = []) {
     	return $this->api->payment->all($options);
     }
 
@@ -120,7 +117,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function createOrder($contents = []) {
+    public static function createOrder($contents = []) {
 		return $this->api->order->create($contents);
     }
 
@@ -136,7 +133,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getOrderDetails($order_id) {
+    public static function getOrderDetails($order_id) {
 		return $this->api->order->fetch($order_id);
     }
 
@@ -153,7 +150,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getAllOrders($options = []) {
+    public static function getAllOrders($options = []) {
 		return $this->api->order->all($options);
     }
 
@@ -176,7 +173,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function createRefund($contents = []) {
+    public static function createRefund($contents = []) {
 		return $this->api->refund->create($contents);
     }
 
@@ -192,7 +189,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getRefundDetails($refund_id) {
+    public static function getRefundDetails($refund_id) {
 		return $this->api->refund->fetch($refund_id);
     }
 
@@ -215,7 +212,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getCardDetails($card_id) {
+    public static function getCardDetails($card_id) {
 		return $this->api->card->fetch($card_id);
     }
 
@@ -241,7 +238,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function addOrUpdateUser($contents = [], $is_edit = false) {
+    public static function addOrUpdateUser($contents = [], $is_edit = false) {
     	if($is_edit)
     		return $this->api->customer->edit($contents);
 		return $this->api->customer->create($contents);
@@ -259,7 +256,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getCustomerDetails($customer_id) {
+    public static function getCustomerDetails($customer_id) {
 		return $this->api->customer->fetch($customer_id);
     }
 
@@ -282,7 +279,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getTokenDetails($token_id) {
+    public static function getTokenDetails($token_id) {
 		return $this->api->customer->token()->fetch($token_id);
     }
 
@@ -298,7 +295,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getAllTokens($options = []) {
+    public static function getAllTokens($options = []) {
 		return $this->api->customer->token()->all($options);
     }
 
@@ -315,7 +312,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function delete($token_id) {
+    public static function delete($token_id) {
 		return $this->api->customer->token()->delete($token_id);
     }
 
@@ -338,7 +335,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function createTransfer($payment_id, $contents = []) {
+    public static function createTransfer($payment_id, $contents = []) {
 		return $this->api->payment->fetch($payment_id)->transfer($contents);
     }
 
@@ -354,7 +351,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getAllTransfers($options = []) {
+    public static function getAllTransfers($options = []) {
 		return $this->api->transfer->all($options);
     }
 
@@ -370,7 +367,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getAllTransfersById($payment_id) {
+    public static function getAllTransfersById($payment_id) {
 		return $this->api->payment->fetch($payment_id)->transfers();
     }
 
@@ -388,7 +385,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function editOrReverseTransfer($transfer_id, $is_edit = false, $options = []) {
+    public static function editOrReverseTransfer($transfer_id, $is_edit = false, $options = []) {
     	if($is_edit)
     		return $this->api->transfer->fetch($transfer_id)->edit($options);
     	return $this->api->transfer->fetch($transfer_id)->reverse();
@@ -411,7 +408,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getAllPaymentLinks() {
+    public static function getAllPaymentLinks() {
 		return $this->api->all();
     }
 
@@ -434,7 +431,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function createPlan($contents) {
+    public static function createPlan($contents) {
 		return $this->api->plan->create($contents);
     }
 
@@ -450,7 +447,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getPlanDetailsById($plan_id) {
+    public static function getPlanDetailsById($plan_id) {
 		return $this->api->plan->fetch($plan_id);
     }
 
@@ -466,7 +463,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getAllPlans($options) {
+    public static function getAllPlans($options) {
 		return $this->api->plan->all($options);
     }
 
@@ -482,7 +479,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function createSubscription($contents) {
+    public static function createSubscription($contents) {
 		return $this->api->subscription->create($contents);
     }
 
@@ -501,7 +498,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function fetchOrCancelSubscription($subscription_id, $cancel = false) {
+    public static function fetchOrCancelSubscription($subscription_id, $cancel = false) {
     	if($cancel)
     		return $this->api->subscription->fetch($subscription_id)->cancel();
     	return $this->api->subscription->fetch($subscription_id);
@@ -519,7 +516,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function getSubscriptions($options = []) {
+    public static function getSubscriptions($options = []) {
     	return $this->api->subscription->all($options);
     }
 
@@ -536,7 +533,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function createAddon($subscription_id, $contents = []) {
+    public static function createAddon($subscription_id, $contents = []) {
 		return $this->api->subscription->fetch($subscription_id)->createAddon($contents);
     }
 
@@ -555,7 +552,7 @@ public function test() {
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function fetchOrDeleteAddon($addon_id, $delete = false) {
+    public static function fetchOrDeleteAddon($addon_id, $delete = false) {
     	if($cancel)
     		return $this->api->addon->fetch($addon_id)->delete();
     	return $this->api->addon->fetch($addon_id);

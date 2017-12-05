@@ -4,7 +4,6 @@ namespace Lakshmaji\Razorpay;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Config\Repository as Config;
-// require_once __DIR__.'/../vendor/autoload.php';
 use Razorpay\Api\Api;
 
 /**
@@ -56,7 +55,7 @@ class RazorpayServiceProvider extends ServiceProvider
                 $config = $app->make('config');
                 $key = $config->get('razorpay.KEY_ID');
                 $secret = $config->get('razorpay.KEY_SECRET');
-                $api = new \Razorpay\Api\Api($key, $secret);
+                $api = new Api($key, $secret);
                 return new Razorpay($api);
             });
         }
