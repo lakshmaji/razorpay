@@ -52,6 +52,9 @@ class Razorpay
     
     // ------------------------------------------------------------------------
 
+public function test() {
+    echo "inn package\n";
+}
 
 	/*
 	|--------------------------------------------------------------------------
@@ -552,7 +555,7 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public function fetchOrCancelSubscription($addon_id, $delete = false) {
+    public function fetchOrDeleteAddon($addon_id, $delete = false) {
     	if($cancel)
     		return $this->api->addon->fetch($addon_id)->delete();
     	return $this->api->addon->fetch($addon_id);
