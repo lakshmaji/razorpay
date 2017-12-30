@@ -81,7 +81,15 @@ RAZORPAY_KEY_SECRET=hsjhgfYU76ghf56R^JH
 
 >### Usage
 
-Coming soon
+ - Fetch payment details
+ 	```php
+    	$this->api->getPaymentDetails($paymentId);
+	```
+
+ - Capture (verify) payment details
+ 	```php
+    	$this->api->getPaymentDetails($paymentId, ['amount' => 500]);
+	```
 
 
 ----
