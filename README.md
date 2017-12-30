@@ -81,15 +81,34 @@ RAZORPAY_KEY_SECRET=hsjhgfYU76ghf56R^JH
 
 >### Usage
 
+ - With Constructor instantiaon
+```php
+<?php
+
+use Razorpay;
+
+protected $request;
+protected $razorpay;
+
+public function __construct(
+    Request $request,
+    Razorpay $razorpay
+) {
+    // Set the properties
+    $this->request = $request;
+    $this->razorpay = $razorpay;
+}
+```	
+
  - Fetch payment details
- 	```php
-    	$this->api->getPaymentDetails($paymentId);
-	```
+```php
+	$this->razorpay->getPaymentDetails($paymentId);
+```
 
  - Capture (verify) payment details
- 	```php
-    	$this->api->getPaymentDetails($paymentId, ['amount' => 500]);
-	```
+```php
+	$this->razorpay->getPaymentDetails($paymentId, ['amount' => 500]);
+```
 
 
 ----

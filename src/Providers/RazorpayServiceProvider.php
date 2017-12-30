@@ -1,9 +1,8 @@
 <?php
 
-namespace Lakshmaji\Razorpay;
+namespace Lakshmaji\Razorpay\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Config\Repository as Config;
 use Razorpay\Api\Api;
 
 /**
