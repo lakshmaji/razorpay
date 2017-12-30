@@ -19,6 +19,8 @@ use Razorpay\Api\Api;
  */
 class RazorpayServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
+    
     /**
      * Bootstrap the application services.
      *
@@ -27,7 +29,7 @@ class RazorpayServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/razorpay.php' => config_path('razorpay.php')
+            __DIR__.'../config/razorpay.php' => config_path('razorpay.php')
         ], 'razorpay');
     }
 
@@ -38,7 +40,7 @@ class RazorpayServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom( __DIR__.'/config/razorpay.php', 'razorpay');
+        $this->mergeConfigFrom( __DIR__.'../config/razorpay.php', 'razorpay');
 
 
         if (method_exists(\Illuminate\Foundation\Application::class, 'singleton')) {
