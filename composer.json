@@ -28,7 +28,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Lakshmaji\\Razorpay\\RazorpayServiceProvider"
+                "Lakshmaji\\Razorpay\\Providers\\RazorpayServiceProvider",
+                "Lakshmaji\\Razorpay\\Providers\\PaymentServiceProvider"
             ],
             "aliases": {
                 "Razorpay": "Lakshmaji\\Razorpay\\Razorpay"

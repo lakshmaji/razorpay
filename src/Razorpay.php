@@ -7,7 +7,7 @@
 |
 */
 namespace Lakshmaji\Razorpay;
-
+use Razorpay\Api\Api;
 use Exception;
 
 
@@ -31,7 +31,7 @@ class Razorpay
      * @version 1.0.0
      *
      */
-	private $api;
+    private $api;
 
     // ------------------------------------------------------------------------
 
@@ -46,23 +46,18 @@ class Razorpay
      * @author  Lakshmaji 
      *
      */
-	public function __construct($api) {
-		$this->api = $api;
-	}
+    public function __construct(Api $api) {
+        $this->api = $api;
+    }
     
     // ------------------------------------------------------------------------
 
-
-    public static function test() {
-        echo "in package";
-    }
-
-	/*
-	|--------------------------------------------------------------------------
-	| Payments
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Payments
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Get Payment details in Razorpay system
@@ -76,12 +71,12 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getPaymentDetails($payment_id, $capture = []) {
-    	$payment = $this->api->payment->fetch($payment_id);
-    	if(!!count($capture)) {
-    		$payment->capture($capture);
-    	}
-    	return $payment;
+    public  function getPaymentDetails($payment_id, $capture = []) {
+        $payment = $this->api->payment->fetch($payment_id);
+        if(!!count($capture)) {
+            $payment->capture($capture);
+        }
+        return $payment;
     }
 
     // ------------------------------------------------------------------------
@@ -96,19 +91,19 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-	public static function getAllPayments($options = []) {
-    	return $this->api->payment->all($options);
+    public function getAllPayments($options = []) {
+        return $this->api->payment->all($options);
     }
 
     // ------------------------------------------------------------------------
 
 
-	/*
-	|--------------------------------------------------------------------------
-	| Orders
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Orders
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Create Order entry in Razorpay system
@@ -121,8 +116,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function createOrder($contents = []) {
-		return $this->api->order->create($contents);
+    public function createOrder($contents = []) {
+        return $this->api->order->create($contents);
     }
 
     // ------------------------------------------------------------------------
@@ -137,8 +132,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getOrderDetails($order_id) {
-		return $this->api->order->fetch($order_id);
+    public function getOrderDetails($order_id) {
+        return $this->api->order->fetch($order_id);
     }
 
     // ------------------------------------------------------------------------
@@ -154,19 +149,19 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getAllOrders($options = []) {
-		return $this->api->order->all($options);
+    public function getAllOrders($options = []) {
+        return $this->api->order->all($options);
     }
 
     // ------------------------------------------------------------------------
 
 
-	/*
-	|--------------------------------------------------------------------------
-	| Refunds
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Refunds
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Create Refund entry in Razorpay system
@@ -177,8 +172,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function createRefund($contents = []) {
-		return $this->api->refund->create($contents);
+    public function createRefund($contents = []) {
+        return $this->api->refund->create($contents);
     }
 
     // ------------------------------------------------------------------------
@@ -193,19 +188,19 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getRefundDetails($refund_id) {
-		return $this->api->refund->fetch($refund_id);
+    public function getRefundDetails($refund_id) {
+        return $this->api->refund->fetch($refund_id);
     }
 
     // ------------------------------------------------------------------------
 
 
-	/*
-	|--------------------------------------------------------------------------
-	| Cards
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Cards
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Returns a particular card
@@ -216,20 +211,20 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getCardDetails($card_id) {
-		return $this->api->card->fetch($card_id);
+    public function getCardDetails($card_id) {
+        return $this->api->card->fetch($card_id);
     }
 
     // ------------------------------------------------------------------------
 
 
 
-	/*
-	|--------------------------------------------------------------------------
-	| Customers
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Customers
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Create Customer entry in Razorpay system
@@ -242,10 +237,10 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function addOrUpdateUser($contents = [], $is_edit = false) {
-    	if($is_edit)
-    		return $this->api->customer->edit($contents);
-		return $this->api->customer->create($contents);
+    public function addOrUpdateUser($contents = [], $is_edit = false) {
+        if($is_edit)
+            return $this->api->customer->edit($contents);
+        return $this->api->customer->create($contents);
     }
 
     // ------------------------------------------------------------------------
@@ -260,19 +255,19 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getCustomerDetails($customer_id) {
-		return $this->api->customer->fetch($customer_id);
+    public function getCustomerDetails($customer_id) {
+        return $this->api->customer->fetch($customer_id);
     }
 
     // ------------------------------------------------------------------------
 
 
-	/*
-	|--------------------------------------------------------------------------
-	| Tokens
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Tokens
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Returns a particular token
@@ -283,8 +278,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getTokenDetails($token_id) {
-		return $this->api->customer->token()->fetch($token_id);
+    public function getTokenDetails($token_id) {
+        return $this->api->customer->token()->fetch($token_id);
     }
 
     // ------------------------------------------------------------------------
@@ -299,8 +294,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getAllTokens($options = []) {
-		return $this->api->customer->token()->all($options);
+    public function getAllTokens($options = []) {
+        return $this->api->customer->token()->all($options);
     }
 
     // ------------------------------------------------------------------------
@@ -316,18 +311,18 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function delete($token_id) {
-		return $this->api->customer->token()->delete($token_id);
+    public function delete($token_id) {
+        return $this->api->customer->token()->delete($token_id);
     }
 
     // ------------------------------------------------------------------------
 
-	/*
-	|--------------------------------------------------------------------------
-	| Transfers
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Transfers
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Create transfer
@@ -339,8 +334,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function createTransfer($payment_id, $contents = []) {
-		return $this->api->payment->fetch($payment_id)->transfer($contents);
+    public function createTransfer($payment_id, $contents = []) {
+        return $this->api->payment->fetch($payment_id)->transfer($contents);
     }
 
     // ------------------------------------------------------------------------
@@ -355,8 +350,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getAllTransfers($options = []) {
-		return $this->api->transfer->all($options);
+    public function getAllTransfers($options = []) {
+        return $this->api->transfer->all($options);
     }
 
     // ------------------------------------------------------------------------
@@ -371,8 +366,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getAllTransfersById($payment_id) {
-		return $this->api->payment->fetch($payment_id)->transfers();
+    public function getAllTransfersById($payment_id) {
+        return $this->api->payment->fetch($payment_id)->transfers();
     }
 
     // ------------------------------------------------------------------------
@@ -389,20 +384,20 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function editOrReverseTransfer($transfer_id, $is_edit = false, $options = []) {
-    	if($is_edit)
-    		return $this->api->transfer->fetch($transfer_id)->edit($options);
-    	return $this->api->transfer->fetch($transfer_id)->reverse();
+    public function editOrReverseTransfer($transfer_id, $is_edit = false, $options = []) {
+        if($is_edit)
+            return $this->api->transfer->fetch($transfer_id)->edit($options);
+        return $this->api->transfer->fetch($transfer_id)->reverse();
     }
 
     // ------------------------------------------------------------------------
 
-	/*
-	|--------------------------------------------------------------------------
-	| Payment Links
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Payment Links
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Returns all payment links
@@ -412,19 +407,19 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getAllPaymentLinks() {
-		return $this->api->all();
+    public function getAllPaymentLinks() {
+        return $this->api->all();
     }
 
     // ------------------------------------------------------------------------
 
 
-	/*
-	|--------------------------------------------------------------------------
-	| Subscriptions
-	|--------------------------------------------------------------------------
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Subscriptions
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * Create plan
@@ -435,8 +430,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function createPlan($contents) {
-		return $this->api->plan->create($contents);
+    public function createPlan($contents) {
+        return $this->api->plan->create($contents);
     }
 
     // ------------------------------------------------------------------------
@@ -451,8 +446,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getPlanDetailsById($plan_id) {
-		return $this->api->plan->fetch($plan_id);
+    public function getPlanDetailsById($plan_id) {
+        return $this->api->plan->fetch($plan_id);
     }
 
     // ------------------------------------------------------------------------
@@ -467,8 +462,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getAllPlans($options) {
-		return $this->api->plan->all($options);
+    public function getAllPlans($options) {
+        return $this->api->plan->all($options);
     }
 
     // ------------------------------------------------------------------------
@@ -483,8 +478,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function createSubscription($contents) {
-		return $this->api->subscription->create($contents);
+    public function createSubscription($contents) {
+        return $this->api->subscription->create($contents);
     }
 
     // ------------------------------------------------------------------------
@@ -502,10 +497,10 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function fetchOrCancelSubscription($subscription_id, $cancel = false) {
-    	if($cancel)
-    		return $this->api->subscription->fetch($subscription_id)->cancel();
-    	return $this->api->subscription->fetch($subscription_id);
+    public function fetchOrCancelSubscription($subscription_id, $cancel = false) {
+        if($cancel)
+            return $this->api->subscription->fetch($subscription_id)->cancel();
+        return $this->api->subscription->fetch($subscription_id);
     }
 
     // ------------------------------------------------------------------------
@@ -520,8 +515,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function getSubscriptions($options = []) {
-    	return $this->api->subscription->all($options);
+    public function getSubscriptions($options = []) {
+        return $this->api->subscription->all($options);
     }
 
     // ------------------------------------------------------------------------
@@ -537,8 +532,8 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function createAddon($subscription_id, $contents = []) {
-		return $this->api->subscription->fetch($subscription_id)->createAddon($contents);
+    public function createAddon($subscription_id, $contents = []) {
+        return $this->api->subscription->fetch($subscription_id)->createAddon($contents);
     }
 
     // ------------------------------------------------------------------------
@@ -556,10 +551,10 @@ class Razorpay
      * @since   Method available since Release 1.0.0
      * @version 1.0.0
      */
-    public static function fetchOrDeleteAddon($addon_id, $delete = false) {
-    	if($cancel)
-    		return $this->api->addon->fetch($addon_id)->delete();
-    	return $this->api->addon->fetch($addon_id);
+    public function fetchOrDeleteAddon($addon_id, $delete = false) {
+        if($cancel)
+            return $this->api->addon->fetch($addon_id)->delete();
+        return $this->api->addon->fetch($addon_id);
     }
 
     // ------------------------------------------------------------------------

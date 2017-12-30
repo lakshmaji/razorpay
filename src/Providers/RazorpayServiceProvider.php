@@ -43,20 +43,18 @@ class RazorpayServiceProvider extends ServiceProvider
 
 
         if (method_exists(\Illuminate\Foundation\Application::class, 'singleton')) {
-            $this->app->singleton('razorpay', function($app) {
+            $this->app->singleton('Razorpay\Api\Api', function($app) {
                 $config = $app->make('config');
                 $key = $config->get('razorpay.KEY_ID');
                 $secret = $config->get('razorpay.KEY_SECRET');
-                $api = new Api($key, $secret);
-                return new Razorpay($api);
+                return new Api($key, $secret);
             });
         } else {
             $this->app['razorpay'] = $this->app->share(function($app) {
                 $config = $app->make('config');
                 $key = $config->get('razorpay.KEY_ID');
                 $secret = $config->get('razorpay.KEY_SECRET');
-                $api = new Api($key, $secret);
-                return new Razorpay($api);
+                return new Api($key, $secret);
             });
         }
 
